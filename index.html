@@ -6,11 +6,13 @@
 </head>
 <body>
 	<div id="speakerbox">
+	 	 <a href="#" id="prev_btn">&laquo;</a>
+	 	 <a href="#" id="next_btn">&raquo;</a>
 		 <div id="carousel">
 		 </div>
 	</div>
 	
-	<script id="speakertpl" type="text/template">
+	<script id="speakerstpl" type="text/template">
 		{{#speakers}}
 			<div class="speaker">
 				<img src="images/{{shortname}}_tn.jpg" alt="Photo of {{name}}" />
@@ -26,9 +28,18 @@
 	<script type="text/javascript">
 		$(function() {
 			$.getJSON('data.json', function(data) {
-				var template = $('#speakertpl').html();
+				var template = $('#speakerstpl').html();
 				var html = Mustache.to_html(template, data);
 				$('#carousel').html(html);
+				
+				$('#carousel').cycle({
+					fx: 'fade',
+					pause: 1,
+					next: '#next_btn',
+					prev: '#prev_btn',
+					speed: 500,
+					timeout: 10000
+				});
 			}); // getJSON
 		}); // function
 	</script>
