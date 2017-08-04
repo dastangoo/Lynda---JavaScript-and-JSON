@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	
-	$.getJSON('data.json', function() {
+	$.getJSON('data.json', function(info) {
 		var output = '';
 		for (var i = 0; i <= info.links.length; i++) {
 			for (key in info.links[i]) {
