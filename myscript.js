@@ -1,5 +1,7 @@
-function dataHandler(info) {
-	var output = '';
+$(document).ready(function() {
+	
+	$.getJSON('data.json', function() {
+		var output = '';
 		for (var i = 0; i <= info.links.length; i++) {
 			for (key in info.links[i]) {
 				if(info.links[i].hasOwnProperty(key)) {
@@ -12,4 +14,5 @@ function dataHandler(info) {
 		}
 		var update = document.getElementById('links');
 		update.innerHTML = output;
-}
+	}); // getJSON
+}); // ready
